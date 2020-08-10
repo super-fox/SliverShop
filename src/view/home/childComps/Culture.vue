@@ -35,7 +35,7 @@
         data() {
             return {
                 isFixed: false,
-                offsetTop: 0
+                offsetTop: 0,
             }
         }
     }

@@ -1,13 +1,24 @@
 <template>
     <div class="slide2">
-        <img src="~assets/img/slide/img3.jpg" alt="">
-        <img src="~assets/img/slide/img4.jpg" alt="">
+        <ul class="img">
+            <li v-for="(item,index) in imgList">
+                <img v-lazy="item" alt="">
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Slide2"
+        name: "Slide2",
+        data(){
+            return {
+                imgList:[
+                    require('../../../../assets/img/slide/img3.jpg'),
+                    require('../../../../assets/img/slide/img4.jpg')
+                ]
+            }
+        }
     }
 </script>
 
@@ -16,5 +27,8 @@
         width: 130px;
         height: 100px;
         margin-left: 10px;
+    }
+    .img li{
+        display: inline-block;
     }
 </style>

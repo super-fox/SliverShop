@@ -14,7 +14,7 @@ Vue.use(toast)
 
 //懒加载
 Vue.use(VueLazyload,{
-    loading:require('./assets/img/act/img1.jpg')
+    loading:require('./assets/img/loading/20197222241997732.gif')
 })
 
 new Vue({

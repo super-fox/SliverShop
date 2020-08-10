@@ -54,4 +54,6 @@ a {
 .right {
     float: right;
 }
-
+li{
+    list-style-type: none;
+}
