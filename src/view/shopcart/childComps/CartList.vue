@@ -1,17 +1,9 @@
 <template>
     <div v-if="goodsList.length">
         <div class="cart-list">
-            <div class="tit_gds_item clearfix">
-                <div class="tit_gds_check">
-                    <input type="checkbox"
-                           :checked="goodsIds.length===goodsList.length"
-                           @click="checkedAll">
-                </div>
-                <div class="tit_gds_txt">商品</div>
-                <div class="tit_gds_num">数量</div>
-                <div class="tit_gds_price">价格</div>
-                <div class="tit_gds_operate">操作</div>
-            </div>
+            <!--            全选功能-->
+
+
             <!--        具体商品展示-->
             <div class="cart-item" v-for="(product,index) in goodsList"
                  :key="index">
@@ -43,14 +35,31 @@
                 </div>
                 <!--            删除操作-->
                 <div class="gds_operate">
-                    <div class="gds_delete" @click="deleteClick(index)">删除</div>
+                    <div class="gds_delete" @click="deleteClick(index)">
+                        <img src="../../../assets/img/shop_cart/delete.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!--            结算区域-->
+            <div class="tit_gds_item clearfix">
+                <div class="tit_gds_check">
+                    <input type="checkbox"
+                           :checked="goodsIds.length===goodsList.length"
+                           @click="checkedAll">
+                </div>
+                <div class="to-cart">
+                    <span>去结算</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--    购物车为空的时候-->
     <div v-else><img class="empty"
                      src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2145208668,1958297527&fm=26&gp=0.jpg"
-                     alt=""></div>
+                     alt="">
+    </div>
 </template>
 
 <script>
@@ -78,17 +87,31 @@
 <style scoped>
     .cart-list {
         height: 100vh;
-        background-color: #fff;
+        background-color: #f1f1f1;
     }
 
     .tit_gds_item {
+        position: fixed;
         display: flex;
-        background-color: #ccc;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        background-color: #fff;
+        bottom: 49px;
+        padding-left: 10px;
+
+        line-height: 50px;
     }
 
-    .tit_gds_item div {
-        flex: 1;
+    .tit_gds_check {
+        width: 50px;
+    }
+
+    .to-cart {
+        background-color: #d95155;
+        width: 30%;
         text-align: center;
+        color: #fff;
     }
 
     .tit_gds_check:after {
@@ -96,12 +119,17 @@
     }
 
     .cart-item {
+        position: relative;
         display: flex;
-        width: 100%;
+        width: 90%;
         height: 100px;
-        background-color: #e0e0e0;
+        background-color: #fff;
         margin-bottom: 10px;
+        top: 150px;
+        margin-left: 50%;
+        transform: translate(-50%, -50%);
 
+        border-radius: 10px;
     }
 
     .gds_check {
@@ -136,7 +164,7 @@
         display: inline-block;
         width: 26px;
         height: 26px;
-        background-color: #fff;
+        background: rgba(217, 81, 85, .85);
         border-radius: 50%;
         text-align: center;
         line-height: 26px;
@@ -152,9 +180,16 @@
         margin-left: 25px;
         margin-top: 35px;
     }
-.gds_delete{
-    margin-left: 22px;
-}
+
+    .gds_delete {
+        margin-left: 10px;
+    }
+
+    .gds_delete img {
+        width: 25px;
+        height: 25px;
+    }
+
     .empty {
         width: 280px;
         height: 394px;
